@@ -21,7 +21,7 @@ export default function Card({ product }) {
     >
       <figure>
         <img
-          className="w-full object-cover h-[300px] rounded-xl"
+          className="w-full object-cover h-full md:h-[300px] rounded-xl"
           src={product.image}
           alt={product.title}
         />
