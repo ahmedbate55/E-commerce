@@ -23,50 +23,56 @@ export default function Cart() {
           <h1 className="md:text-2xl">total: {total.toFixed(2)}</h1>
         </div>
         <div className="grow flex flex-col gap-10">
-          {cartInfo.map((el, index) => {
-            return (
-              <>
-                <div key={index} className="flex flex-col gap-3">
-                  <img
-                    className="w-full object-contain p-3 h-[250px] rounded-2xl"
-                    src={el.image}
-                  />
-                  <p className="px-5 font-sans">
-                    price : {(el.price * el.qty).toFixed(2)} $
-                  </p>
-                  <div className="flex justify-between items-center px-5">
-                    <div className="flex items-center gap-3">
-                      <button
-                        className="btn btn-error btn-soft"
+          {cartInfo.length > 0 ? (
+            cartInfo.map((el, index) => {
+              return (
+                <>
+                  <div key={index} className="flex flex-col gap-3">
+                    <img
+                      className="w-full object-contain p-3 h-[250px] rounded-2xl"
+                      src={el.image}
+                    />
+                    <p className="px-5 font-sans">
+                      price : {(el.price * el.qty).toFixed(2)} $
+                    </p>
+                    <div className="flex justify-between items-center px-5">
+                      <div className="flex items-center gap-3">
+                        <button
+                          className="btn btn-error btn-soft"
+                          onClick={() => {
+                            decreasQty(index);
+                          }}
+                        >
+                          -
+                        </button>
+                        <p>{el.qty}</p>
+                        <button
+                          className="btn btn-success btn-soft"
+                          onClick={() => {
+                            incraseNum(index);
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <div
                         onClick={() => {
-                          decreasQty(index);
+                          removeFromCart(index);
                         }}
+                        className="btn btn-error"
                       >
-                        -
-                      </button>
-                      <p>{el.qty}</p>
-                      <button
-                        className="btn btn-success btn-soft"
-                        onClick={() => {
-                          incraseNum(index);
-                        }}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <div
-                      onClick={() => {
-                        removeFromCart(index);
-                      }}
-                      className="btn btn-error"
-                    >
-                      <LuTrash />
+                        <LuTrash />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </>
-            );
-          })}
+                </>
+              );
+            })
+          ) : (
+            <div className="w-full h-full flex justify-center items-center">
+              <h1 className="text-2xl md:text-4xl text-red-700">cart is empty</h1>
+            </div>
+          )}
         </div>
         <div
           className="border-t pt-2"
