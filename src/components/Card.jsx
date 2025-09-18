@@ -17,11 +17,11 @@ export default function Card({ product }) {
   return (
     <motion.div
       variants={item}
-      className="card bg-gray-900 text-white md:p-3 shadow-sm hover:scale-105 transition duration-300"
+      className="card bg-gray-900 text-white p-2 md:p-3 shadow-sm hover:scale-105 transition duration-300"
     >
       <figure>
         <img
-          className="w-full object-cover h-[330px] rounded-xl"
+          className="w-full object-cover h-[300px] rounded-xl"
           src={product.image}
           alt={product.title}
         />

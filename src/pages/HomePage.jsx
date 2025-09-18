@@ -64,7 +64,7 @@ export default function HomePage() {
           textAlign="center"
         />
       </div>
-      <section className="container px-4">
+      <section className="container px-6">
         <motion.div
           variants={container}
           initial="hidden"
