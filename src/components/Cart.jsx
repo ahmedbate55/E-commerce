@@ -22,14 +22,13 @@ export default function Cart() {
           <h1 className="md:text-2xl">Cart</h1>
           <h1 className="md:text-2xl">total: {total.toFixed(2)}</h1>
         </div>
-        <div className="grow">
+        <div className="grow flex flex-col gap-10">
           {cartInfo.map((el, index) => {
             return (
               <>
-                <div className="flex flex-col gap-5">
+                <div key={index} className="flex flex-col gap-3">
                   <img
-                    key={index}
-                    className="w-full object-cover p-3 h-[250px] rounded-2xl"
+                    className="w-full object-contain p-3 h-[250px] rounded-2xl"
                     src={el.image}
                   />
                   <p className="px-5 font-sans">
