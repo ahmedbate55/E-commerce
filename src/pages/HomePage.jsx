@@ -26,7 +26,6 @@ export default function HomePage() {
     axios
       .get("https://free-food-menus-api-two.vercel.app/burgers")
       .then((res) => {
-        console.log(res.data);
         setProducts(res.data);
         setTimeout(() => {
           setModal(false);
@@ -72,7 +71,7 @@ export default function HomePage() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-5 p-3 md:p-0 "
         >
           {products.map((el, index) => {
             return <Card key={index} product={el} />;

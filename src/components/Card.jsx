@@ -17,7 +17,7 @@ export default function Card({ product }) {
   return (
     <motion.div
       variants={item}
-      className="card bg-gray-900 text-white shadow-sm hover:scale-105 transition duration-300"
+      className="card bg-gray-900 text-white shadow-sm hover:scale-105 p-0 transition duration-300"
     >
       <figure>
         <img
