@@ -35,9 +35,9 @@ export default function Card({ product }) {
               toast.success("Item added successfully");
               addToCart({ ...product, qty: 1 });
             }}
-            className="btn btn-accent"
+            className="btn btn-ghost"
           >
-            Buy Now
+            Add To Cart
           </button>
         </div>
       </div>
