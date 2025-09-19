@@ -10,7 +10,7 @@ export default function App() {
       <Toaster position="top-center" reverseOrder={false} />
 
       {/* Background */}
-      <div className="absolute inset-0 -z-10 bg-black">
+      <div className="absolute inset-0 -z-10 bg-white">
         <LiquidEther
           colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
           mouseForce={20}

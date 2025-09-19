@@ -54,7 +54,7 @@ export default function HomePage() {
       <div className="w-full flex justify-center">
         <SplitText
           text="Welcome to our Restaurant "
-          className="text-2xl md:text-3xl font-semibold text-white text-center"
+          className="text-2xl md:text-3xl font-semibold text-black text-center"
           delay={100}
           duration={0.6}
           ease="power3.out"
