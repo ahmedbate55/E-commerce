@@ -2,27 +2,9 @@ import styled from "styled-components";
 const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="capybaraloader">
-        <div className="capybara">
-          <div className="capyhead">
-            <div className="capyear">
-              <div className="capyear2" />
-            </div>
-            <div className="capyear" />
-            <div className="capymouth">
-              <div className="capylips" />
-              <div className="capylips" />
-            </div>
-            <div className="capyeye" />
-            <div className="capyeye" />
-          </div>
-          <div className="capyleg" />
-          <div className="capyleg2" />
-          <div className="capyleg2" />
-          <div className="capy" />
-        </div>
-        <div className="loader">
-          <div className="loaderline" />
+      <div className="loader">
+        <div data-glitch="Loading..." className="glitch">
+          Loading...
         </div>
       </div>
     </StyledWrapper>
@@ -30,199 +12,105 @@ const Loader = () => {
 };
 
 const StyledWrapper = styled.div`
-  .capybaraloader {
-    width: 14em;
-    height: 10em;
+  .glitch {
     position: relative;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    letter-spacing: 5px;
     z-index: 1;
-    --color: rgb(204, 125, 45);
-    --color2: rgb(83, 56, 28);
-    transform: scale(0.75);
-  }
-  .capybara {
-    width: 100%;
-    height: 7.5em;
-    position: relative;
-    z-index: 1;
-  }
-  .loader {
-    width: 100%;
-    height: 2.5em;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-  }
-  .capy {
-    width: 85%;
-    height: 100%;
-    background: linear-gradient(var(--color), 90%, var(--color2));
-    border-radius: 45%;
-    position: relative;
-    z-index: 1;
-    animation: movebody 1s linear infinite;
-  }
-  .capyhead {
-    width: 7.5em;
-    height: 7em;
-    bottom: 0em;
-    right: 0em;
-    position: absolute;
-    background-color: var(--color);
-    z-index: 3;
-    border-radius: 3.5em;
-    box-shadow: -1em 0em var(--color2);
-    animation: movebody 1s linear infinite;
-  }
-  .capyear {
-    width: 2em;
-    height: 2em;
-    background: linear-gradient(-45deg, var(--color), 90%, var(--color2));
-    top: 0em;
-    left: 0em;
-    border-radius: 100%;
-    position: absolute;
-    overflow: hidden;
-    z-index: 3;
-  }
-  .capyear:nth-child(2) {
-    left: 5em;
-    background: linear-gradient(25deg, var(--color), 90%, var(--color2));
-  }
-  .capyear2 {
-    width: 100%;
-    height: 1em;
-    background-color: var(--color2);
-    bottom: 0em;
-    left: 0.5em;
-    border-radius: 100%;
-    position: absolute;
-    transform: rotate(-45deg);
-  }
-  .capymouth {
-    width: 3.5em;
-    height: 2em;
-    background-color: var(--color2);
-    position: absolute;
-    bottom: 0em;
-    left: 2.5em;
-    border-radius: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.5em;
-  }
-  .capylips {
-    width: 0.25em;
-    height: 0.75em;
-    border-radius: 100%;
-    transform: rotate(-45deg);
-    background-color: var(--color);
-  }
-  .capylips:nth-child(2) {
-    transform: rotate(45deg);
-  }
-  .capyeye {
-    width: 2em;
-    height: 0.5em;
-    background-color: var(--color2);
-    position: absolute;
-    bottom: 3.5em;
-    left: 1.5em;
-    border-radius: 5em;
-    transform: rotate(45deg);
-  }
-  .capyeye:nth-child(4) {
-    transform: rotate(-45deg);
-    left: 5.5em;
-    width: 1.75em;
-  }
-  .capyleg {
-    width: 6em;
-    height: 5em;
-    bottom: 0em;
-    left: 0em;
-    position: absolute;
-    background: linear-gradient(var(--color), 95%, var(--color2));
-    z-index: 2;
-    border-radius: 2em;
-    animation: movebody 1s linear infinite;
-  }
-  .capyleg2 {
-    width: 1.75em;
-    height: 3em;
-    bottom: 0em;
-    left: 3.25em;
-    position: absolute;
-    background: linear-gradient(var(--color), 80%, var(--color2));
-    z-index: 2;
-    border-radius: 0.75em;
-    box-shadow: inset 0em -0.5em var(--color2);
-    animation: moveleg 1s linear infinite;
-  }
-  .capyleg2:nth-child(3) {
-    width: 1.25em;
-    left: 0.5em;
-    height: 2em;
-    animation: moveleg2 1s linear infinite 0.075s;
+    animation: shift 1s ease-in-out infinite alternate;
   }
 
-  @keyframes moveleg {
+  .glitch:before,
+  .glitch:after {
+    display: block;
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+  }
+
+  .glitch:before {
+    animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: #8b00ff;
+    z-index: -1;
+  }
+
+  .glitch:after {
+    animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both
+      infinite;
+    color: #00e571;
+    z-index: -2;
+  }
+
+  @keyframes glitch {
     0% {
-      transform: rotate(-45deg) translateX(-5%);
+      transform: translate(0);
     }
-    50% {
-      transform: rotate(45deg) translateX(5%);
+
+    20% {
+      transform: translate(-3px, 3px);
     }
-    100% {
-      transform: rotate(-45deg) translateX(-5%);
+
+    40% {
+      transform: translate(-3px, -3px);
+    }
+
+    60% {
+      transform: translate(3px, 3px);
+    }
+
+    80% {
+      transform: translate(3px, -3px);
+    }
+
+    to {
+      transform: translate(0);
     }
   }
 
-  @keyframes moveleg2 {
-    0% {
-      transform: rotate(45deg);
-    }
-    50% {
-      transform: rotate(-45deg);
-    }
+  @keyframes shift {
+    0%,
+    40%,
+    44%,
+    58%,
+    61%,
+    65%,
+    69%,
+    73%,
     100% {
-      transform: rotate(45deg);
+      transform: skewX(0deg);
     }
-  }
 
-  @keyframes movebody {
-    0% {
-      transform: translateX(0%);
+    41% {
+      transform: skewX(10deg);
     }
-    50% {
-      transform: translateX(2%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  }
 
-  .loaderline {
-    width: 50em;
-    height: 0.5em;
-    border-top: 0.5em dashed var(--color2);
-    animation: moveline 10s linear infinite;
-  }
+    42% {
+      transform: skewX(-10deg);
+    }
 
-  @keyframes moveline {
-    0% {
-      transform: translateX(0%);
-      opacity: 0%;
+    59% {
+      transform: skewX(40deg) skewY(10deg);
     }
-    5% {
-      opacity: 100%;
+
+    60% {
+      transform: skewX(-40deg) skewY(-10deg);
     }
-    95% {
-      opacity: 100%;
+
+    63% {
+      transform: skewX(10deg) skewY(-5deg);
     }
-    100% {
-      opacity: 0%;
-      transform: translateX(-70%);
+
+    70% {
+      transform: skewX(-50deg) skewY(-20deg);
+    }
+
+    71% {
+      transform: skewX(10deg) skewY(-10deg);
     }
   }
 `;

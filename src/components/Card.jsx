@@ -35,7 +35,7 @@ export default function Card({ product }) {
               toast.success("Item added successfully");
               addToCart({ ...product, qty: 1 });
             }}
-            className="btn btn-ghost"
+            className="btn btn-primary btn-soft"
           >
             Add To Cart
           </button>
