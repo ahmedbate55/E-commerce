@@ -1,5 +1,6 @@
 import { cart } from "../store/cart";
 import { LuTrash } from "react-icons/lu";
+import noImage from "../assets/no.jpg";
 
 export default function Cart() {
   const { CloseModal, cartInfo, incraseNum, decreasQty, removeFromCart } =
@@ -29,8 +30,8 @@ export default function Cart() {
                 <>
                   <div key={index} className="flex flex-col gap-3">
                     <img
-                      className="w-full object-contain p-3 h-[250px] rounded-2xl"
-                      src={el.image}
+                      className="w-full object-cover p-3 h-full rounded-full"
+                      src={el.img ? el.img : noImage}
                     />
                     <p className="px-5 font-sans">
                       price : {(el.price * el.qty).toFixed(2)} $
@@ -70,7 +71,9 @@ export default function Cart() {
             })
           ) : (
             <div className="w-full h-full flex justify-center items-center">
-              <h1 className="text-2xl md:text-4xl text-red-700">cart is empty</h1>
+              <h1 className="text-2xl md:text-4xl text-red-700">
+                cart is empty
+              </h1>
             </div>
           )}
         </div>

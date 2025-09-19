@@ -23,12 +23,15 @@ export default function HomePage() {
     },
   };
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products").then((res) => {
-      setProducts(res.data);
-      setTimeout(() => {
-        setModal(false);
-      }, 1000);
-    });
+    axios
+      .get("https://free-food-menus-api-two.vercel.app/burgers")
+      .then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
+        setTimeout(() => {
+          setModal(false);
+        }, 1000);
+      });
   }, []);
   return (
     <div className="w-full h-full flex flex-col gap-20">
@@ -51,7 +54,7 @@ export default function HomePage() {
 
       <div className="w-full flex justify-center">
         <SplitText
-          text="Welcome to our brand"
+          text="Welcome to our Restaurant "
           className="text-2xl md:text-3xl font-semibold text-white text-center"
           delay={100}
           duration={0.6}

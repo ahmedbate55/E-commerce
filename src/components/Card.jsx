@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { cart } from "../store/cart";
 import { motion } from "framer-motion";
-
+import noImage from "../assets/no.jpg";
 const item = {
   hidden: { opacity: 0, y: 40 },
   show: {
@@ -17,17 +17,17 @@ export default function Card({ product }) {
   return (
     <motion.div
       variants={item}
-      className="card bg-gray-900 text-white md:p-3 shadow-sm hover:scale-105 transition duration-300"
+      className="card bg-gray-900 text-white shadow-sm hover:scale-105 transition duration-300"
     >
       <figure>
         <img
-          className="w-full object-contain p-5 md:p-0 md:h-[300px] rounded-xl"
-          src={product.image}
+          className="w-full object-cover md:h-[300px]"
+          src={product.img ? product.img : noImage}
           alt={product.title}
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title font-sans">{product.title}</h2>
+        <h2 className="card-title font-sans">{product.name}</h2>
         <p className="font-sans">Price : {product.price} $</p>
         <div className="card-actions justify-end">
           <button
