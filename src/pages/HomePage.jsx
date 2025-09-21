@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Modal from "../modal/Modal";
 import Card from "../components/Card";
@@ -37,7 +37,7 @@ export default function HomePage() {
       {showModal ? <Modal /> : null}
       {modal && <Cart />}
 
-      <div className="container p-4 hidden md:flex justify-between items-center">
+      <div className="container p-4 hidden md:flex bg-gray-900 justify-between items-center">
         <button
           className="btn btn-primary"
           onClick={() => {
@@ -50,7 +50,9 @@ export default function HomePage() {
           Cart
         </button>
       </div>
-      <div className="container p-4 flex fixed z-30 md:hidden justify-between items-center">
+      <div
+        className={`container p-4 flex fixed z-30  md:hidden bg-gray-900 justify-between items-center `}
+      >
         <button
           className="btn btn-primary"
           onClick={() => {
