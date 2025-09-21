@@ -33,11 +33,24 @@ export default function HomePage() {
       });
   }, []);
   return (
-    <div className="w-full h-full flex flex-col gap-20">
+    <div className="w-full h-full flex flex-col gap-10">
       {showModal ? <Modal /> : null}
       {modal && <Cart />}
 
-      <div className="container p-4 flex justify-between items-center">
+      <div className="container p-4 hidden md:flex justify-between items-center">
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
+        </button>
+        <button onClick={openModal} className="flex btn btn-success">
+          Cart
+        </button>
+      </div>
+      <div className="container p-4 flex fixed z-30 md:hidden justify-between items-center">
         <button
           className="btn btn-primary"
           onClick={() => {
@@ -51,7 +64,7 @@ export default function HomePage() {
         </button>
       </div>
 
-      <div className="w-full flex justify-center">
+      <div className="w-full pt-24 md:pt-5 flex justify-center">
         <SplitText
           text="Welcome to our Restaurant "
           className="text-2xl md:text-3xl font-semibold text-black text-center"
